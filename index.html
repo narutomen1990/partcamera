@@ -2,33 +2,18 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ระบบสั่งจองอะไหล่กล้อง</title>
+  <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycbwG4hwyDZxbIseNBh55CZle_-fn2zFFWKzZU12xk_jlMoAKrqw0a0RmPhYZEGJqXRTiug/exec">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      width: 100%; height: 100%;
-      overflow: hidden; position: fixed;
-      -webkit-overflow-scrolling: touch;
-    }
-    #app-frame {
+    body {
       width: 100vw; height: 100vh;
-      border: none; display: block;
-      position: absolute; top: 0; left: 0;
-    }
-    #loading {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
       background: #667eea;
       display: flex; justify-content: center; align-items: center;
       flex-direction: column;
-      z-index: 9999;
-      transition: opacity 0.5s;
+      font-family: 'Segoe UI', sans-serif;
     }
-    #loading.hide { opacity: 0; pointer-events: none; }
     .spinner {
       width: 50px; height: 50px;
       border: 5px solid rgba(255,255,255,0.3);
@@ -37,49 +22,18 @@
       animation: spin 1s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    #loading p {
-      color: white;
-      margin-top: 20px;
-      font-family: 'Segoe UI', sans-serif;
-    }
+    p { color: white; margin-top: 20px; }
+    a { color: white; margin-top: 10px; text-decoration: underline; }
   </style>
 </head>
 <body>
-  <div id="loading">
-    <div class="spinner"></div>
-    <p>กำลังโหลด...</p>
-  </div>
-
-  <iframe 
-    id="app-frame"
-    src="https://script.google.com/macros/s/AKfycbwG4hwyDZxbIseNBh55CZle_-fn2zFFWKzZU12xk_jlMoAKrqw0a0RmPhYZEGJqXRTiug/exec"
-    allow="camera; geolocation"
-    loading="eager"
-  ></iframe>
-
+  <div class="spinner"></div>
+  <p>กำลังเปิดระบบ...</p>
+  <a href="https://script.google.com/macros/s/AKfycbwG4hwyDZxbIseNBh55CZle_-fn2zFFWKzZU12xk_jlMoAKrqw0a0RmPhYZEGJqXRTiug/exec">
+    คลิกที่นี่ถ้าหน้าไม่เปลี่ยน
+  </a>
   <script>
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        document.getElementById('loading').classList.add('hide');
-      }, 1000);
-    });
-
-    document.addEventListener('gesturestart', function(e) {
-      e.preventDefault();
-    });
-
-    function resizeIframe() {
-      const frame = document.getElementById('app-frame');
-      frame.style.height = window.innerHeight + 'px';
-      frame.style.width = window.innerWidth + 'px';
-    }
-    window.addEventListener('resize', resizeIframe);
-    window.addEventListener('orientationchange', resizeIframe);
-    resizeIframe();
-
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(function() {});
-    }
+    window.location.replace("https://script.google.com/macros/s/AKfycbwG4hwyDZxbIseNBh55CZle_-fn2zFFWKzZU12xk_jlMoAKrqw0a0RmPhYZEGJqXRTiug/exec");
   </script>
 </body>
 </html>
